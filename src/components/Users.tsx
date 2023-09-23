@@ -220,7 +220,7 @@ const listItem = [
     icon: <FiUsers />,
   },
   {
-    title: "Company",
+    title: "Loyiha haqida",
     icon: <FiLayers />,
   },
   {
