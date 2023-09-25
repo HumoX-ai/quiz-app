@@ -29,10 +29,11 @@ export const Layout = () => {
           </div>
           <Fade top cascade>
             <ul className="items-center gap-8 text-white hidden lg:flex">
-              <li>Products</li>
-              <li>Developers</li>
-              <li>Company</li>
-              <li>Pricing</li>
+              {listItem.map((item, index) => (
+                <Link to="/login" key={index}>
+                  <li>{item.title}</li>
+                </Link>
+              ))}
             </ul>
           </Fade>
           <div className="hidden lg:flex">
@@ -41,7 +42,6 @@ export const Layout = () => {
                 Kirish
               </Button>
             </Link>
-         
           </div>
           <div className="text-white flex lg:hidden text-2xl">
             <FiMenu onClick={() => setIsOpen(!isOpen)} />
@@ -92,15 +92,15 @@ export const Layout = () => {
 
 const listItem = [
   {
-    title: "Products",
+    title: "Testlar",
     icon: <FiShoppingCart />,
   },
   {
-    title: "Developers",
+    title: "Natijalar",
     icon: <FiUsers />,
   },
   {
-    title: "Company",
+    title: "loyiha haqida",
     icon: <FiLayers />,
   },
   {

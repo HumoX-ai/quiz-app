@@ -27,11 +27,11 @@ export const Hero = () => {
       <Fade left cascade duration={500}>
         <div className="mx-auto">
           <h1 className="text-white text-4xl lg:text-6xl max-w-xs  font-bold">
-            Get Your Payment Faster
+            Bilimingizni sinash uchun
           </h1>
           <p className="text-white mt-4 max-w-xs lg:max-w-lg">
-            Blinqpay helps businesses in Africa get paid by anyone, anywhere in
-            the world
+            Quiz APP loyhasi sizni fanlardan qanchalik yaxshi
+            o'zlashtirganingizni darajalar orqali baholaydi
           </p>
 
           <Button

@@ -12,7 +12,7 @@ import {
   FiTrello,
 } from "react-icons/fi";
 import { Hero } from "./Hero/Hero";
-import Topics from "./Quiz/Topics/Topics";
+import Topics from "./Topics/Topics";
 import Fade from "react-reveal/Fade";
 import { Results } from "./Results/Results";
 

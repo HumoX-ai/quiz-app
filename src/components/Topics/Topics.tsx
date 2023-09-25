@@ -1,5 +1,5 @@
-import { quiz } from "../../../../db";
-import { IFormInput } from "../../Users";
+import { quiz } from "../../../db";
+import { IFormInput } from "../Users";
 import Fade from "react-reveal/Fade";
 interface TopicsProps {
   user: IFormInput; // User ma'lumotlari uchun interfeys

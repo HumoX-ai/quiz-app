@@ -6,6 +6,8 @@ import {
   DialogFooter,
 } from "@material-tailwind/react";
 import { IFormInput } from "../Users";
+import { useEffect, useState } from "react";
+import axios from "axios";
 
 interface handleModalOpenProps {
   open: boolean;
@@ -13,6 +15,19 @@ interface handleModalOpenProps {
   handleOpen: () => void;
 }
 export function Results({ handleOpen, open, user }: handleModalOpenProps) {
+  const [useList, setUseList] = useState<IFormInput[]>([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const res = await axios.get(
+        "https://65088b8356db83a34d9c7d66.mockapi.io/api/v1/login"
+      );
+      setUseList(res.data);
+    };
+    fetchData();
+  });
+  const sortedUsers = useList.sort((a, b) => b.result - a.result);
+  const index = sortedUsers.findIndex((item) => item.id === user.id);
   return (
     <>
       <Button onClick={handleOpen} variant="gradient">
@@ -43,6 +58,10 @@ export function Results({ handleOpen, open, user }: handleModalOpenProps) {
           Tarix: <span className="font-semibold">{user.tarix}</span>
           <br />
           Umumiy ball: <span className="font-semibold">{user.result}</span>
+          <br />
+          <p>
+            Reytingda: <span className="font-semibold">{index + 1}</span>-o'rindasiz
+          </p>
         </DialogBody>
         <DialogFooter>
           <Button variant="gradient" color="green" onClick={handleOpen}>

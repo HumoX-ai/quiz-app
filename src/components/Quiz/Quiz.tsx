@@ -39,6 +39,8 @@ export const Quiz: React.FC<QuizProps> = ({ quiz, handleOpen, open, id }) => {
   const [correctAnswers, setCorrectAnswers] = useState(0);
   const [quizCompleted, setQuizCompleted] = useState(false);
   const [incorrectAnswers, setIncorrectAnswers] = useState(0);
+  const [isSelected, setIsSelected] = useState(false);
+  console.log(incorrectAnswers);
 
   const handleNext = () => {
     const totalQuestions = quiz.reduce(
@@ -73,13 +75,20 @@ export const Quiz: React.FC<QuizProps> = ({ quiz, handleOpen, open, id }) => {
       setSelectedAnswer(true);
       console.log("To'gri");
     } else {
-      setIncorrectAnswers(incorrectAnswers + 1);
       setSelectedAnswer(false);
       console.log("Notog'ri");
     }
   };
 
   const handleAnswerSubmit = async () => {
+    if (selectedChoice === null) {
+      setIsSelected(true);
+      return;
+    }
+    if (!selectedAnswer) {
+      setIncorrectAnswers(incorrectAnswers + 1);
+    }
+
     const response = await axios.get(
       `https://65088b8356db83a34d9c7d66.mockapi.io/api/v1/login/${id}`
     );
@@ -141,7 +150,10 @@ export const Quiz: React.FC<QuizProps> = ({ quiz, handleOpen, open, id }) => {
                   {choices.map((choice: string, index: number) => (
                     <li
                       key={index}
-                      onClick={() => selectCorrectAnswer(choice, index)}
+                      onClick={() => {
+                        selectCorrectAnswer(choice, index);
+                        setIsSelected(false);
+                      }}
                       className={
                         selectedChoice === index
                           ? "bg-green-800 py-1 px-2 text-white rounded-md"
@@ -151,6 +163,9 @@ export const Quiz: React.FC<QuizProps> = ({ quiz, handleOpen, open, id }) => {
                       {choice}
                     </li>
                   ))}
+                  {isSelected ? (
+                    <div className="text-red-600">Variant belgilanmagan!</div>
+                  ) : null}
                 </ul>
               </div>
             </DialogBody>
