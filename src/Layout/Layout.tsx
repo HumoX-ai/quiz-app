@@ -31,7 +31,9 @@ export const Layout = () => {
             <ul className="items-center gap-8 text-white hidden lg:flex">
               {listItem.map((item, index) => (
                 <Link to="/login" key={index}>
-                  <li>{item.title}</li>
+                  <li className="cursor-pointer hover:text-blue-gray-300 transition-all duration-300">
+                    {item.title}
+                  </li>
                 </Link>
               ))}
             </ul>

@@ -176,13 +176,14 @@ export const Users = () => {
             {listItem.map((item, index) => (
               <li
                 key={index}
-                onClick={
-                  index === 0
-                    ? scrollToTopics
-                    : index === 1
-                    ? handleModalOpen
-                    : () => {}
-                }
+                onClick={() => {
+                  setIsOpen(false);
+                  if (index === 0) {
+                    scrollToTopics();
+                  } else if (index === 1) {
+                    handleModalOpen();
+                  }
+                }}
                 className=" rounded-md p-2 flex items-center gap-2 font-semibold cursor-pointer hover:bg-blue-gray-200 hover:text-white transition-all duration-300 "
               >
                 {item.icon}
